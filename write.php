@@ -16,16 +16,16 @@
     padding: 20px;
     margin: 140px auto;
     max-width: 600px;
-    color: #333; /* Dark text color for readability */
+    color: #333; 
     text-align: center;
-    font-size: 1.1em; /* Slightly larger font size */
+    font-size: 1.1em; 
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .confirmation-message {
-        margin: 20px 10px; /* Smaller side margins on smaller screens */
-        padding: 20px 10px; /* Smaller padding on smaller screens */
+        margin: 20px 10px; 
+        padding: 20px 10px; 
     }
 }
 

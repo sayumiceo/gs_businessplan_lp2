@@ -12,58 +12,74 @@
 </head>
 <body>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #fff; 
+}
+
+h1 {
+    text-align: center;
+    padding: 20px 0; /* 上下の余白 */
+    margin: 0 20px; /* 左右の余白 */
+    background-color: #fff; 
+    color: #333; 
+}
+
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin: 20px; 
+}
+
+.blog-box {
+    padding: 20px; 
+    border-radius: 10px; 
+    background-color: #f9f9f9; 
+}
+
+.blog-title {
+    font-size: 1.2em; 
+    margin-bottom: 0.5em; 
+}
+
+.blog-subtitle,
+.blog-category,
+.blog-content {
+    margin-bottom: 0.5em; 
+}
+
+@media (max-width: 768px) {
+    .blog-container {
+        grid-template-columns: 1fr; /* 画面が狭いときは1列にする */
+    }
+}
+
+</style>
+
 <?php include 'header.php'; ?>
 
-<?php
-$title = $_POST['title'] ?? 'No title';
-$subtitle = $_POST['subtitle'] ?? 'No subtitle';
-$category = $_POST['category'] ?? 'No category';
-$content = $_POST['content'] ?? 'No content';
-$image = $_FILES['image'] ?? null;
+<h1>Our Blog</h1>
 
-
-// タイトルと内容を表示（実際のアプリケーションでは、データベースに保存するなどの処理をここに記述します）
-echo "<h1>" . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . "</h1>";
-echo "<h3>" . htmlspecialchars($subtitle, ENT_QUOTES, 'UTF-8') . "</h3>";
-echo "<h5>" . htmlspecialchars($category, ENT_QUOTES, 'UTF-8') . "</h5>";
-//nl2br：文字列中の改行文字（\n）をHTMLの改行タグに変換。
-echo "<p>" . nl2br(htmlspecialchars($content, ENT_QUOTES, 'UTF-8')) . "</p>";
-
-
-// データベース接続情報
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "your_cms_database";
-
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-// ブログ記事を取得するクエリ
-$sql = "SELECT title, content, date_posted FROM blog_posts ORDER BY date_posted DESC LIMIT 1";
-$result = $conn->query($sql);
-
-// データの表示
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "<div class='blog-post'>";
-    echo "<h2>" . $row["title"] . "</h2>";
-    echo "<p>" . $row["content"] . "</p>";
-    echo "<p>Posted on: " . $row["date_posted"] . "</p>";
-    echo "</div>";
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
+<div class="blog-container">
+        <?php
+        // CSVファイルを開き、データを読み込んでボックス形式で表示
+        if (($file = fopen('BlogData.csv', 'r')) !== FALSE) {
+            while (($data = fgetcsv($file)) !== FALSE) {
+                echo '<div class="blog-box">';
+                echo '<div class="blog-title">' . htmlspecialchars($data[0]) . '</div>';
+                echo '<div class="blog-subtitle">' . htmlspecialchars($data[1]) . '</div>';
+                echo '<div class="blog-category">' . htmlspecialchars($data[2]) . '</div>';
+                echo '<div class="blog-content">' . nl2br(htmlspecialchars($data[3])) . '</div>';
+                echo '</div>';
+            }
+            fclose($file);
+        }
+        ?>
+    </div>
 
 
 
@@ -71,5 +87,6 @@ $conn->close();
   
 </body>
 </html>
+
 
 

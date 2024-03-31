@@ -15,7 +15,7 @@
 
 
         <main class="content">
-            <form action="../blog.php" method="post" enctype="multipart/form-data">
+            <form action="write.php" method="post" enctype="multipart/form-data">
                 <h1>Write a blog</h1>
                 <div class="form-group">
                     <label for="title">Blog Title</label>
