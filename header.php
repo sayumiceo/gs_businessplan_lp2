@@ -1,6 +1,12 @@
 <div id="header">
     <nav class="nav-bar">
-        <div><img src="img/NuptialAgree_sample02.png" alt="Company Logo" /></div>
+    
+        <div>
+            <a href="index.php">
+                <img src="img/NuptialAgree_sample02.png" alt="Company Logo" />
+            </a>
+        </div>
+
         <ul>
             <li><a href="#">About Us</a></li>
             <li><a href="#">How it Works</a></li>

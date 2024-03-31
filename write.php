@@ -10,6 +10,27 @@
 
 
 </head>
+
+<style>
+.confirmation-message {
+    padding: 20px;
+    margin: 140px auto;
+    max-width: 600px;
+    color: #333; /* Dark text color for readability */
+    text-align: center;
+    font-size: 1.1em; /* Slightly larger font size */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .confirmation-message {
+        margin: 20px 10px; /* Smaller side margins on smaller screens */
+        padding: 20px 10px; /* Smaller padding on smaller screens */
+    }
+}
+
+</style>
+
 <body>
 
 <?php include 'header.php'; ?>
@@ -27,10 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     fputcsv($file, [$nickname, $email, $message, $agree]);
     fclose($file);
 
-    echo "Thank you for your message. It has been sent.";
+echo '<div class="confirmation-message">Thank you for your message. It has been sent.</div>';
 } else {
-    echo "Please submit the form.";
+    echo '<div class="confirmation-message">Please submit the form.</div>';
 }
+
 ?>
 
 <?php include 'footer.php'; ?>

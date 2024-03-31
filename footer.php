@@ -1,9 +1,13 @@
 <footer class="lp-footer">
   <div class="footer-top">
 
-      <div class="footer-logo">
+  <div class="footer-logo">
+    <a href="index.php">
         <img src="img/NuptialAgree_sample03.png" alt="Company Logo" />
-     </div>
+    </a>
+</div>
+
+     
 
       <div class="footer-column">
           <h4>Service</h4>
@@ -20,7 +24,7 @@
           <h4>Our COMPANY</h4>
           <ul>
               <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="contactus.php">Contact Us</a></li>
               <li><a href="#">Blog</a></li>
               <li><a href="#">Press</a></li>
               <li><a href="#">Affiliates</a></li>
