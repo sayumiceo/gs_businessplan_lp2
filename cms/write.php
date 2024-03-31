@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog form</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<?php include 'sidebar.php'; ?>
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'] ?? 'No title';
@@ -15,3 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo '<div class="confirmation-message">Please submit the form.</div>';
 }
 ?>
+
+
+</body>
+</html>
